@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "heroku-postbuild": "npm run build",
+    "postinstall": "npm run build",
     "start": "nodemon",
     "inspect": "nodemon --inspect src/index.ts",
     "lint": "npm run lint:js ",
