@@ -1,6 +1,6 @@
 var str = window.location.href;
 var botid = str.match(/botid=([^&]*)/)[1];
-var homeurl = "http://localhost:7000";
+var homeurl = "https://api-talkbox.herokuapp.com";
 var questionDelay = 2000;
 var answerDelay = 500;
 (function () {
