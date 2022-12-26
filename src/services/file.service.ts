@@ -46,6 +46,7 @@ export default class FileService {
     }
     private _makeJsForTalkboxStarter(bot: IBot): string {
         const homeUrl = config.homeUrl;
+        const talkbox_html = `<!DOCTYPE html><head><script> var botId = "${bot._id}" </script> </head> <body> <div id="chat-container"> <div id="chat-box"></div> <div id="type-box"> <div class="branding"></div>  </div> </div> <input type="hidden" id="session" /> <div> <script src="${homeUrl}/cdn/talkbox.js"></script> </div> </body> </html>`;
         // bot.startUpParams.startIconPosition.left is a boolean value to specify left or right
         const s_right = `${bot.startUpParams.startIconPosition.left ? 'left:93px;' : 'right:23px;'}`;
         //bot.startUpParams.startIconPosition.bottom is a pixel value to specify icon placement at the bottom
@@ -61,7 +62,7 @@ export default class FileService {
 
         let s_startButtonText = '';
         if (bot.startUpParams.startIconText?.length > 0) {
-            s_startButtonText = `#start-button-text { font-family: "Open Sans",sans-serif; font-size: 14px!important; font-weight: 400; position: relative; z-index: 214748000; cursor: pointer; background-color: #fff; color: #666; padding: 3px 8px; line-height: 2;border-radius: .625rem !important; white-space: normal; text-overflow: ellipsis; max-width: 105px; margin-left: -74px;  box-shadow: 0 0 20px 0 rgb(0 0 0 / 15%); animation: launcher-frame-appear 0.25s ease forwards; bottom: -${bot.startUpParams.startIconSize.width}px; left: -${bot.startUpParams.startIconSize.width + 8}px} #start-button-text:before { content:""; position: absolute; width: 0; height: 0; left: auto; right: -15px; top: 28%; bottom: auto; border: 8px solid; border-color: transparent transparent transparent #fff;}`;
+            s_startButtonText = `#start-button-text { font-family: "Open Sans",sans-serif; font-size: 12px!important; font-weight: 400; position: relative; z-index: 214748000; cursor: pointer; background-color: #fff; color: #666; padding: 3px 8px; line-height: 1.5;border-radius: .625rem !important; white-space: normal; word-break: break-word; text-overflow: ellipsis; max-width: 149px; max-height: 60px; margin-left: -122px;  box-shadow: 0 0 20px 0 rgb(0 0 0 / 15%); animation: launcher-frame-appear 0.25s ease forwards; bottom: -${(bot.startUpParams.startIconSize.height - 20)}px; left: -${bot.startUpParams.startIconSize.width + 8}px} #start-button-text:before { content:""; position: absolute; width: 0; height: 0; left: auto; right: -15px; top: 28%; bottom: auto; border: 8px solid; border-color: transparent transparent transparent #fff;}`;
         }
         const s_talkboxbottom = `bottom: ${bot.startUpParams.startIconPosition.bottom}px;`;
         const s_talkboxright = `${bot.startUpParams.startIconPosition.left ? 'left:90px;' : 'right:20px;'}`;
@@ -88,7 +89,7 @@ export default class FileService {
 
         let js = `(function(){`;
         js += `var str = document.currentScript.src;`;
-        js += `var botId = str.split('.')[0].split('/')[str.split('.')[0].split('/').length-1];`;
+        js += `var botId = str.split('/')[str.split('/').length-1].split('.')[0];`;
         // js += `var referers = ['${bot.referrers.join('\',\'')}'];`;
         js += `fetch('${homeUrl}/api/bots/verify', { method: "POST", body: JSON.stringify({
             bot: {id: botId}
@@ -98,7 +99,7 @@ export default class FileService {
         js += `if(referred.length == 0) return false; `;
         js += `var interval = null;`;
         js += `var initialStyles = document.createElement('style');`;
-        js += `initialStyles.innerText = '${s_startButtonContainer} ${s_startButton} ${s_startButtonText} ${s_talkbox} ${s_talkboxheader} ${s_talkboxheadertext} ${s_talkboxtopbuttons} #inner-talkbox {  background-color:#FFF; height:93%; } #talk-box-iframe { z-index: 214748000; backgroung-color: ${bot.talkBoxParams.talkboxBackGround}; position: absolute; padding: 0px; margin: 0px; left: 0px; right: 0px; width: 100% !important; height: 94% !important; max-width: 100% !important; max-height: 100% !important; border: none; border-radius: 6px !important; visibility: visible !important;      opacity: 1 !important; display: block !important; pointer-events: initial !important; } @media only screen and (max-device-width: 567px), screen and (max-width: 450px) { #talkbox.talkbox-active { width: 100% !important; height: 100% !important; left: 0px !important; right: 0px !important; top: -24px !important; bottom: 0px !important; border-radius: 0px; max-height: initial; }'; `;
+        js += `initialStyles.innerText = '${s_startButtonContainer} ${s_startButton} ${s_startButtonText} ${s_talkbox} ${s_talkboxheader} ${s_talkboxheadertext} ${s_talkboxtopbuttons} #inner-talkbox {  background-color:#FFF; height:93%; } #talk-box-iframe { z-index: 214748000; background-color: ${bot.talkBoxParams.talkboxBackGround}; position: absolute; padding: 0px; margin: 0px; left: 0px; right: 0px; width: 100% !important; height: 94% !important; max-width: 100% !important; max-height: 100% !important; border: none; border-radius: 6px !important; visibility: visible !important;      opacity: 1 !important; display: block !important; pointer-events: initial !important; } @media only screen and (max-device-width: 567px), screen and (max-width: 450px) { #talkbox.talkbox-active { width: 100% !important; height: 100% !important; left: 0px !important; right: 0px !important; top: -24px !important; bottom: 0px !important; border-radius: 0px; max-height: initial; }'; `;
         js += 'var h = document.head || d.getElementsByTagName("head")[0]; ';
         js += 'h.appendChild(initialStyles);';
         js += `var talkBox = document.createElement('div');`;
@@ -129,7 +130,7 @@ export default class FileService {
         js += `talkBox.appendChild(innerTalkBox);`;
         js += `var talkBoxIframe = document.createElement('iframe');`;
         js += `talkBoxIframe.id = 'talk-box-iframe';`;
-        js += `talkBoxIframe.src = '${homeUrl}/cdn/talkbox.html?botid=${bot._id}';`;
+        js += `talkBoxIframe.srcdoc = '${talkbox_html}';`;
         js += `talkBoxIframe.setAttribute('scrolling', 'no');`;
         js += `innerTalkBox.appendChild(talkBoxIframe);`;
         js += `var startBtnContainer = document.createElement('div');`;

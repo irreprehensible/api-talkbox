@@ -109,14 +109,57 @@ export default (app: Router) => {
             const newBot: IBotInputDTO = {
                 name: req.body.bot.name,
                 description: req.body.bot.description || '',
+                // conv: req.body.bot.conv || [{
+                //     id: "66666-99999-00000",
+                //     text
+                //         : "This chat terminated abruply <br> Really sorry....<br> Please start over...",
+                //     type: botType.OPTION,
+                //     responseValidation: null,
+                //     options: [
+                //         { text: "Start Over", value: "0" },
+                //     ],
+                //     waitForReply: false
+                // }],
                 conv: req.body.bot.conv || [{
-                    id: "66666-99999-00000",
-                    text
-                        : "This chat terminated abruply <br> Really sorry....<br> Please start over...",
-                    type: botType.OPTION,
+                    id: "0",
+                    text: "How are you",
+                    type: "option",
                     responseValidation: null,
                     options: [
-                        { text: "Start Over", value: "0" },
+                        { text: "OK", value: "0" },
+                        { text: "Cool", value: "1" },
+                        { text: "Bad", value: "2" },
+                    ],
+                    nextQuestion: null,
+                    waitForReply: false
+                },
+                {
+                    id: "00",
+                    text: "That's Good",
+                    type: "text",
+                    responseValidation: null,
+                    options: null,
+                    nextQuestion: "3",
+                    waitForReply: false
+                },
+                {
+                    id: "01",
+                    text: "That's Cool!",
+                    type: "text",
+                    responseValidation: null,
+                    options: null,
+                    nextQuestion: "3",
+                    waitForReply: false
+                },
+                {
+                    id: "02",
+                    text: "That's Bad!",
+                    type: "option",
+                    responseValidation: null,
+                    options: [
+                        { text: "Im gay", value: "0" },
+                        { text: "Im dying", value: "1" },
+                        { text: "Just bored!", value: "2" },
                     ],
                     waitForReply: false
                 }],
@@ -153,10 +196,10 @@ export default (app: Router) => {
                     //get bots for req.body.user._id
                     let canEdit = botIds.filter(id => {
                         //check if req.body.bot._id is present in user's bots
-                        return (id.botId == req.body.updateBotObj._id && id.canEdit)
-                    })
-                    logger.info(`user can ${canEdit.length > 0 ? 'edit' : 'cannot edit'} the bot`);
-                    if (canEdit.length > 0) {
+                        return id.botId == req.body.updateBotObj._id
+                    })[0].canEdit;
+                    logger.info(`user ${canEdit ? 'can edit' : 'cannot edit'} the bot`);
+                    if (canEdit) {
                         //if so, check if he can edit
                         const botServiceInstance = Container.get(BotService);
                         await botServiceInstance.updateBot(req.body.user.email, req.body.updateBotObj)

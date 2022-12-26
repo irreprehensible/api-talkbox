@@ -18,7 +18,7 @@ export const referrer = (
             logger.debug(`No referrer defined for bot with ID : ${request.body.bot.id} moving on...`);
             next();
         }
-        else if (referrer.indexOf(request.body.bot.id) > -1) {
+        else if (referrer.indexOf('srcdoc') > -1) {
             logger.debug(`Called from within.... moving on...`);
             next();
         }

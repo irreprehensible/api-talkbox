@@ -3,8 +3,10 @@ import { IBot, IBotInputDTO } from '../interfaces/IBot';
 import Bot from '../models/Bot.model';
 import User from '../models/User.model';
 import Response from '../models/Response.model';
+import ColorScheme from '../models/ColorScheme.model';
 import logger from '../loaders/logger';
 import { IResponse, IResponseDTO } from '../interfaces/IResponse';
+import { IColorScheme } from '../interfaces/IColorScheme';
 
 @Service()
 export default class BotService {
@@ -93,5 +95,18 @@ export default class BotService {
             }
         })
 
+    }
+
+    public async createColorScheme(colorSchemeName: string): Promise<IColorScheme> {
+        logger.debug(`bot.service: creating ColorScheme with name as -> ${colorSchemeName}`);
+
+        return await ColorScheme.create({
+            name: colorSchemeName
+        })
+    }
+
+    public async getColorSchemes(): Promise<IColorScheme[]> {
+        logger.debug(`bot.service: getting all ColorSchemes `);
+        return await ColorScheme.find();
     }
 }

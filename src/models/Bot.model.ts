@@ -34,7 +34,7 @@ const botSchema = new mongoose.Schema({
     modifiedBy: { type: String },
     startUpParams: {
         startIconRounded: { type: Boolean, default: false },
-        startIconBackground: { type: String, default: '#599bb3' },
+        startIconBackground: { type: String, default: '#599bb3' }, // themePrimaryColor
         startIconShadow: {
             required: { type: Boolean, default: true },
             style: { type: String, default: '0px 0px 21px 0px #276873' },
@@ -55,7 +55,7 @@ const botSchema = new mongoose.Schema({
         headerText: { type: String, defult: 'Talkbox' },
         logoText: { type: String, default: 'talkbox by vaunz' },
         closeButton: { type: Boolean, default: true },
-        headerColor: { type: String, default: '#599bb3' },
+        headerColor: { type: String, default: '#599bb3' }, //themePrimaryColor
         talkboxBackGround: { type: String, default: '#FFF' }
     },
     themeColors: {

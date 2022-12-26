@@ -1,0 +1,147 @@
+[
+        {
+          id: "0",
+          text: "How are you",
+          type: "option",
+          responseValidation: null,
+          options: [
+            { text: "OK", value: "0" },
+            { text: "Cool", value: "1" },
+            { text: "Bad", value: "2" },
+          ],
+          nextQuestion: null,
+          waitForReply: false
+        },
+        {
+          id: "00",
+          text: "That's Good",
+          type: "text",
+          responseValidation: null,
+          options: null,
+          nextQuestion: "3",
+          waitForReply: false
+        },
+        {
+          id: "01",
+          text: "That's Cool!",
+          type: "text",
+          responseValidation: null,
+          options: null,
+          nextQuestion: "3",
+          waitForReply: false
+        },
+        {
+          id: "02",
+          text: "That's Bad!",
+          type: "option",
+          responseValidation: null,
+          options: [
+              { text: "Im gay", value: "0" },
+              { text: "Im dying", value: "1" },
+              { text: "Just bored!", value: "2" },
+            ],
+          waitForReply: false
+        },
+        {
+          id: "020",
+          text: "Go kill yourself!",
+          type: "text",
+          responseValidation: null,
+          options: null,
+          nextQuestion: "3",
+          waitForReply: false
+        },
+        {
+          id: "021",
+          text: "Good for you!, then rate us!",
+          type: "rating",
+          responseValidation: null,
+          options: ['1','2','3','4','5'],
+          style: 'star',
+          nextQuestion: "3",
+          waitForReply: false
+        },
+        {
+          id: "022",
+          text: "Welcome to the club!",
+          type: "multi",
+          responseValidation: null,
+          options: [
+            { text: "Whaterver", value: "0" },
+            { text: "Wheezing...", value: "1" },
+            { text: "stoned", value: "2" },
+            { text: "waiting...", value: "3" },
+          ],
+          nextQuestion: "3",
+          waitForReply: false
+        },
+        {
+          id: "3",
+          text: "so... wanna play?",
+          type: "text",
+          responseValidation: null,
+          options: null,
+          nextQuestion: "42",
+          waitForReply: false
+        },
+        {
+          id: "42",
+          text: "give me your email",
+          type: "text",
+          responseValidation: null,
+          placeholder:'Enter you email',
+          options: null,
+          nextQuestion: "4",
+          waitForReply: true
+        },
+        // {
+        //   id: "41",
+        //   text: "give me you no.",
+        //   type: "phone",
+        //   responseValidation: "^[0-9]{10}$",
+        //   placeholder:'Enter 10 digit phone no.',
+        //   options: null,
+        //   nextQuestion: "4",
+        //   waitForReply: true
+        // },
+        {
+            id: "4",
+            text: "when do we play the kickin game?",
+            type: "meeting",
+            buttonText: "Pick a date and time",
+            responseValidation: null,
+            config:{
+              weekdays:[2,3,4,5,6,7],
+              offDays:['25-05-2021','26-05-2021'],
+              appointmentStartTime:'9:00',
+              appointmentEndTime:'17:00',
+              appointmentInterval:30,
+              timezoneOffset: -330,
+              timezone: -5.5,
+              timezoneName: 'Asia/Kolkata'
+            },
+            options: null,
+            nextQuestion: "5",
+            waitForReply: false
+          },
+          {
+            id: "5",
+            text: "ok fine, lefts roll",
+            type: "text",
+            buttonText: "Pick a date",
+            responseValidation: null,
+            options: null,
+            nextQuestion: "6",
+            waitForReply: false
+          },
+          {
+            id: "66666-99999-00000",
+            text: "This chat terminated abruply <br> Really sorry....<br> Please start over...",
+            type: "option",
+            responseValidation: null,
+            options: [
+                { text: "Start Over", value: "0" },
+            ],
+            waitForReply: false
+          }
+      ];

@@ -35,7 +35,7 @@
             });
     </script> -->
     <!-- <script>
-            $.post('https://api-talkbox.herokuapp.com/api/users/login',
+            $.post('http://localhost:7000/api/users/login',
             {
                 email:'martin@ricky.com',
                 password:'ricky_martin'
@@ -66,7 +66,7 @@
             type: 'POST',
             url: 'http://localhost:7000/api/bots',
             headers: {
-                "x-auth-token": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTA2MWMzODkzNjQ5NTM1OWNmMzY1YTgiLCJuYW1lIjoiUmlja3kgTWFydGluIiwiZW1haWwiOiJtYXJ0aW5Acmlja3kuY29tIiwicm9sZSI6eyJyb2xlTmFtZSI6IlVzZXIiLCJyb2xlRGVzYyI6IkRlZmF1bHQgcm9sZSBvZiAnVXNlcicifSwiZXhwIjoxNjM4OTYxNjM4LjYxOCwiaWF0IjoxNjMzNzc3NjM4fQ.4Vhqt9OawFjfkbzGaTLreLosLyJ2rwTPMAgnEEqqB1k",
+                "x-auth-token": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTA2MWMzODkzNjQ5NTM1OWNmMzY1YTgiLCJuYW1lIjoiUmlja3kgTWFydGluIiwiZW1haWwiOiJtYXJ0aW5Acmlja3kuY29tIiwicm9sZSI6eyJyb2xlTmFtZSI6IlVzZXIiLCJyb2xlRGVzYyI6IkRlZmF1bHQgcm9sZSBvZiAnVXNlcicifSwiZXhwIjoxNjMyOTc1MDAzLjYyMywiaWF0IjoxNjI3NzkxMDAzfQ.yc7x6Hb4woOtGF072kYLy0mX4LmXS0ykne4mLJdUInA",
             },
             data: {
                 bot: {
@@ -96,17 +96,48 @@
         });
 
     </script> -->
-    <!-- <script>
+    <script>
         $.ajax({
             type: 'PUT',
             url: 'http://localhost:7000/api/bots',
             headers: {
-                "x-auth-token": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTA2MWMzODkzNjQ5NTM1OWNmMzY1YTgiLCJuYW1lIjoiUmlja3kgTWFydGluIiwiZW1haWwiOiJtYXJ0aW5Acmlja3kuY29tIiwicm9sZSI6eyJyb2xlTmFtZSI6IlVzZXIiLCJyb2xlRGVzYyI6IkRlZmF1bHQgcm9sZSBvZiAnVXNlcicifSwiZXhwIjoxNjMyOTc1MDAzLjYyMywiaWF0IjoxNjI3NzkxMDAzfQ.yc7x6Hb4woOtGF072kYLy0mX4LmXS0ykne4mLJdUInA",
+                "x-auth-token": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTA2MWMzODkzNjQ5NTM1OWNmMzY1YTgiLCJuYW1lIjoiUmlja3kgTWFydGluIiwiZW1haWwiOiJtYXJ0aW5Acmlja3kuY29tIiwicm9sZSI6eyJyb2xlTmFtZSI6IlVzZXIiLCJyb2xlRGVzYyI6IkRlZmF1bHQgcm9sZSBvZiAnVXNlcicifSwiZXhwIjoxNjc2NzMwMjY2LjIzNSwiaWF0IjoxNjcxNTQ2MjY2fQ.wNSS8nY7U2IInk9Khxn2KSpFisyfp77CkHyUWbckZnA",
             },
             data: {
                 updateBotObj: {
-                    _id: '61061edd5258eb196469efd5',
-                    referrers: ['chatbot.html','tester.html']
+                    _id: '63a1ce0319b356451454b1e9',
+                    referrers: ['chatbot.html', 'tester.html'],
+                    name: 'New nue bot'
+                },
+                publish: true
+            }
+        }).done(function (data, status) {
+            alert("Data: " + JSON.stringify(data) + "\nStatus: " + status);
+        });
+
+    </script>
+    <!-- <script>
+            $.ajax({
+                type: 'GET',
+                url: 'http://localhost:7000/api/bots/me',
+                headers: {
+                    "x-auth-token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGNjNzIxODg4MjM0MjFiZWNhMjc0OTQiLCJuYW1lIjoidXNlcnNzc0BvbC5jb20iLCJlbWFpbCI6InVzZXJzc3NAb2wuY29tIiwicm9sZSI6IlVzZXIiLCJleHAiOjE2Mjk0MzkzMjkuMjE3LCJpYXQiOjE2MjQyNTUzMjl9.SNS5Glo_y_Izb0f_qXkqXdnfCfshHJ_WFa2PNDxO6Xs",
+                }
+            }).done(function (data, status) {
+                alert("Data: " + JSON.stringify(data) + "\nStatus: " + status);
+            });
+            
+        </script> -->
+    <!-- <script>
+        $.ajax({
+            type: 'POST',
+            url: 'http://localhost:7000/api/colorscheme',
+            headers: {
+                "x-auth-token": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTA2MWMzODkzNjQ5NTM1OWNmMzY1YTgiLCJuYW1lIjoiUmlja3kgTWFydGluIiwiZW1haWwiOiJtYXJ0aW5Acmlja3kuY29tIiwicm9sZSI6eyJyb2xlTmFtZSI6IlVzZXIiLCJyb2xlRGVzYyI6IkRlZmF1bHQgcm9sZSBvZiAnVXNlcicifSwiZXhwIjoxNjMyOTc1MDAzLjYyMywiaWF0IjoxNjI3NzkxMDAzfQ.yc7x6Hb4woOtGF072kYLy0mX4LmXS0ykne4mLJdUInA",
+            },
+            data: {
+                colorscheme: {
+                    name: 'Default',
                 }
             }
         }).done(function (data, status) {
@@ -114,18 +145,19 @@
         });
 
     </script> -->
+    <!-- 
     <script>
-            $.ajax({
-                type: 'GET',
-                url: 'https://api-talkbox.herokuapp.com/api/bots/me',
-                headers: {
-                    "x-auth-token":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTA2MWMzODkzNjQ5NTM1OWNmMzY1YTgiLCJuYW1lIjoiUmlja3kgTWFydGluIiwiZW1haWwiOiJtYXJ0aW5Acmlja3kuY29tIiwicm9sZSI6eyJyb2xlTmFtZSI6IlVzZXIiLCJyb2xlRGVzYyI6IkRlZmF1bHQgcm9sZSBvZiAnVXNlcicifSwiZXhwIjoxNjM4OTYxNjM4LjYxOCwiaWF0IjoxNjMzNzc3NjM4fQ.4Vhqt9OawFjfkbzGaTLreLosLyJ2rwTPMAgnEEqqB1k",
-                }
-            }).done(function (data, status) {
-                alert("Data: " + JSON.stringify(data) + "\nStatus: " + status);
-            });
-            
-        </script>
+        $.ajax({
+            type: 'GET',
+            url: 'http://localhost:7000/api/colorscheme',
+            headers: {
+                "x-auth-token": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTA2MWMzODkzNjQ5NTM1OWNmMzY1YTgiLCJuYW1lIjoiUmlja3kgTWFydGluIiwiZW1haWwiOiJtYXJ0aW5Acmlja3kuY29tIiwicm9sZSI6eyJyb2xlTmFtZSI6IlVzZXIiLCJyb2xlRGVzYyI6IkRlZmF1bHQgcm9sZSBvZiAnVXNlcicifSwiZXhwIjoxNjMyOTc1MDAzLjYyMywiaWF0IjoxNjI3NzkxMDAzfQ.yc7x6Hb4woOtGF072kYLy0mX4LmXS0ykne4mLJdUInA",
+            }
+        }).done(function (data, status) {
+            alert("Data: " + JSON.stringify(data) + "\nStatus: " + status);
+        });
+
+    </script> -->
 
 </body>
 
