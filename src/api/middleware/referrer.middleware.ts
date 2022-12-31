@@ -26,14 +26,19 @@ export const referrer = (
             const botServiceInstance = Container.get(BotService);
             botServiceInstance.getBot(request.body.bot.id)
                 .then((bot: IBot) => {
-                    let res = bot.referrers.filter((val) => {
-                        return referrer.indexOf(val) > -1
-                    });
-                    if (res.length == 0 && referrer.indexOf(request.body.bot.id) < 0) {
-                        throw new Error("Could not find referrer in bot details, please verify the security parameters");
+                    try {
+                        let res = bot.referrers.filter((val) => {
+                            return referrer.indexOf(val) > -1
+                        });
+                        if (res.length == 0 && referrer.indexOf(request.body.bot.id) < 0) {
+                            throw new Error("Could not find referrer in bot details, please verify the security parameters");
+                        }
+                        else {
+                            next();
+                        }
                     }
-                    else {
-                        next();
+                    catch (ex) {
+                        response.status(400).send(`Access denied. Invalid referrer ${ex.message.length > 0 ? ex.message : ''}`);
                     }
                 })
                 .catch(err => { throw err })

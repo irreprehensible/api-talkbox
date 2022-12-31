@@ -163,6 +163,7 @@ export default (app: Router) => {
                     ],
                     waitForReply: false
                 }],
+                referrers: [''],
                 createdBy: req.body.user.email,
                 modifiedBy: req.body.user.email
             };

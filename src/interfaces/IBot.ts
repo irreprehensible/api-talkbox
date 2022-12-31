@@ -54,6 +54,7 @@ export interface IBotInputDTO {
     name: string;
     description: string,
     conv: IConv[];
+    referrers: [string];
     createdBy: string,
     modifiedBy: string
 }

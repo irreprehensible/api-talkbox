@@ -1,5 +1,5 @@
 import { IBot } from '../interfaces/IBot';
-import mongoose from 'mongoose';
+import mongoose, { Schema } from 'mongoose';
 import Joi from 'joi';
 
 const convOption = new mongoose.Schema({
@@ -14,7 +14,9 @@ const convSchema = new mongoose.Schema({
     text: { type: String, required: true },
     type: { type: String, required: true },
     responseValidation: { type: String },
-    options: [convOption]
+    options: [convOption],
+    nextQuestion: { type: String, required: false },
+    waitForReply: { type: Boolean, default: false }
 });
 
 const botSchema = new mongoose.Schema({
