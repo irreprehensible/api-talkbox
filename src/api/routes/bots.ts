@@ -162,6 +162,17 @@ export default (app: Router) => {
                         { text: "Just bored!", value: "2" },
                     ],
                     waitForReply: false
+                },
+                {
+                    id: "66666-99999-00000",
+                    text
+                        : "This chat terminated abruply <br> Really sorry....<br> Please start over...",
+                    type: botType.OPTION,
+                    responseValidation: null,
+                    options: [
+                        { text: "Start Over", value: "0" },
+                    ],
+                    waitForReply: false
                 }],
                 referrers: [''],
                 createdBy: req.body.user.email,
