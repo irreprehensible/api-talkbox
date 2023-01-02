@@ -126,9 +126,9 @@ export default (app: Router) => {
                     type: "option",
                     responseValidation: null,
                     options: [
-                        { text: "OK", value: "0" },
-                        { text: "Cool", value: "1" },
-                        { text: "Bad", value: "2" },
+                        { text: "OK", value: "0", linkedQuestion: "00" },
+                        { text: "Cool", value: "1", linkedQuestion: "01" },
+                        { text: "Bad", value: "2", linkedQuestion: "02" },
                     ],
                     nextQuestion: null,
                     waitForReply: false

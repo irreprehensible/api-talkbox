@@ -5,7 +5,8 @@ import Joi from 'joi';
 const convOption = new mongoose.Schema({
     _id: false,
     text: { type: String },
-    value: { type: String }
+    value: { type: String },
+    linkedQuestion: { type: String }
 });
 
 const convSchema = new mongoose.Schema({

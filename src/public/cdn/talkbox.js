@@ -598,9 +598,12 @@ function sendOption(questionId, answer, value) {
     let nextQuestionId = '0';
     if (questionId != '66666-99999-00000' && question.type != 'rating') {
         try {
-            nextQuestionId = conversation.filter(function (el) {
-                return el.id == `${questionId}${value}`;
-            })[0].id;
+            if(question.options.length > 0) {
+                nextQuestionId = question.options.filter(o => {
+                    return o.text == answer;
+                })[0].linkedQuestion
+            }
+            
         }
         catch {
             console.log('next')
