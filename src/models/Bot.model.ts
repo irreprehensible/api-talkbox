@@ -35,6 +35,7 @@ const botSchema = new mongoose.Schema({
     modified: { type: Date, required: true, default: Date.now },
     createdBy: { type: String },
     modifiedBy: { type: String },
+    firstQuestion: { type: String },
     startUpParams: {
         startIconRounded: { type: Boolean, default: false },
         startIconBackground: { type: String, default: '#599bb3' }, // themePrimaryColor

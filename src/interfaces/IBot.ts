@@ -10,6 +10,7 @@ export interface IBot extends Document {
     createdBy?: string;
     modifiedBy?: string;
     conv: IConv[];
+    firstQuestion?: string;
     startUpParams: IStartUpParams;
     talkBoxParams: ITalkboxParams;
     themeColors: IThemeColors;
@@ -52,11 +53,12 @@ export interface IConv {
 
 export interface IBotInputDTO {
     name: string;
-    description: string,
-    conv: IConv[];
+    description?: string,
+    conv?: IConv[];
     referrers: [string];
     createdBy: string,
     modifiedBy: string
+    firstQuestion?: string
 }
 
 export enum botType {

@@ -4,7 +4,6 @@ import Bot from '../models/Bot.model';
 import logger from '../loaders/logger';
 import fs from 'fs';
 import config from '../config';
-import { HexColourLuminosity } from '../common/HexColourLuminosity';
 
 @Service()
 export default class FileService {
@@ -46,7 +45,7 @@ export default class FileService {
     }
     private _makeJsForTalkboxStarter(bot: IBot): string {
         const homeUrl = config.homeUrl;
-        const talkbox_html = `<!DOCTYPE html><head><script> var botId = "${bot._id}" </script> </head> <body> <div id="chat-container"> <div id="chat-box"></div> <div id="type-box"> <div class="branding"></div>  </div> </div> <input type="hidden" id="session" /> <div> <script src="${homeUrl}/cdn/talkbox.js"></script> </div> </body> </html>`;
+        const talkbox_html = `<!DOCTYPE html><head><script> var botId = "${bot._id}"; var firstQuestion = "${bot.firstQuestion}"; </script> </head> <body> <div id="chat-container"> <div id="chat-box"></div> <div id="type-box"> <div class="branding"></div>  </div> </div> <input type="hidden" id="session" /> <div> <script src="${homeUrl}/cdn/talkbox.js"></script> </div> </body> </html>`;
         // bot.startUpParams.startIconPosition.left is a boolean value to specify left or right
         const s_right = `${bot.startUpParams.startIconPosition.left ? 'left:93px;' : 'right:23px;'}`;
         //bot.startUpParams.startIconPosition.bottom is a pixel value to specify icon placement at the bottom

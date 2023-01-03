@@ -109,17 +109,6 @@ export default (app: Router) => {
             const newBot: IBotInputDTO = {
                 name: req.body.bot.name,
                 description: req.body.bot.description || '',
-                // conv: req.body.bot.conv || [{
-                //     id: "66666-99999-00000",
-                //     text
-                //         : "This chat terminated abruply <br> Really sorry....<br> Please start over...",
-                //     type: botType.OPTION,
-                //     responseValidation: null,
-                //     options: [
-                //         { text: "Start Over", value: "0" },
-                //     ],
-                //     waitForReply: false
-                // }],
                 conv: req.body.bot.conv || [{
                     id: "0",
                     text: "How are you",
@@ -174,6 +163,7 @@ export default (app: Router) => {
                     ],
                     waitForReply: false
                 }],
+                firstQuestion: '0',
                 referrers: [''],
                 createdBy: req.body.user.email,
                 modifiedBy: req.body.user.email

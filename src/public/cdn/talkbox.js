@@ -26,7 +26,7 @@ var answerDelay = 500;
                         let s = document.createElement('script');
                         s.innerText = `var conversation = ${JSON.stringify(bot.conv)};`;
                         h.appendChild(s);
-                        display('0', questionDelay)
+                        display(firstQuestion, questionDelay)
                     }
                 });
             })
