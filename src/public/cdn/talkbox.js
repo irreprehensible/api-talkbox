@@ -601,19 +601,21 @@ function sendOption(questionId, answer, value) {
     let question = conversation.filter(function (el) {
         return el.id == questionId;
     })[0];
-    if (!question)
+    if(!question)
         question = resetQuestion;
     let option = document.getElementById(`${questionId}-options`);
     if (!option)
         option = document.getElementById(`${questionId}-rating`);
     option.remove();
-    let nextQuestionId = '0';
+    let nextQuestionId = firstQuestion;
     if (question.type != 'rating') {
         try {
             if (question.options.length > 0) {
-                nextQuestionId = question.options.filter(o => {
-                    return o.text == answer;
-                })[0].linkedQuestion
+                question.options.forEach(o => {
+                    if(o.text == answer && o.linkedQuestion) {
+                        nextQuestionId = o.linkedQuestion
+                    }
+                });
             }
         }
         catch {
@@ -624,7 +626,7 @@ function sendOption(questionId, answer, value) {
         nextQuestionId = question.nextQuestion;
     if (nextQuestionId) {
         sendToServer(question.id, answer)
-        if (nextQuestionId == '0')
+        if (nextQuestionId == firstQuestion)
             answer = 'Starting over...';
         show(answer, () => { display(nextQuestionId, questionDelay) });
     }
