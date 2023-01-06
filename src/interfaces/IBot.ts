@@ -48,6 +48,7 @@ export interface IConv {
     type: botType;
     responseValidation?: string;
     options?: any;
+    nextQuestion?: any;
     waitForReply: boolean
 }
 
