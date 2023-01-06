@@ -10,7 +10,7 @@ var resetQuestion = {
     type: 'option',
     responseValidation: null,
     options: [
-        { text: "Start Over", value: "0" },
+        { text: "Start Over", value: "0", linkedQuestion: firstQuestion },
     ],
     waitForReply: false
 };
@@ -598,24 +598,41 @@ function send(questionId) {
     }
 }
 function sendOption(questionId, answer, value) {
-    let question = conversation.filter(function (el) {
+    let question;
+    if(questionId == resetQuestion.id) {
+        question = resetQuestion;
+    }
+    question = conversation.filter(function (el) {
         return el.id == questionId;
     })[0];
-    if(!question)
+    if (!question) {
         question = resetQuestion;
+    }
     let option = document.getElementById(`${questionId}-options`);
     if (!option)
         option = document.getElementById(`${questionId}-rating`);
     option.remove();
-    let nextQuestionId = firstQuestion;
+    let nextQuestionId = resetQuestion.id;
     if (question.type != 'rating') {
         try {
             if (question.options.length > 0) {
                 question.options.forEach(o => {
-                    if(o.text == answer && o.linkedQuestion) {
+                    if (o.text == answer && o.linkedQuestion) {
                         nextQuestionId = o.linkedQuestion
                     }
                 });
+                if (nextQuestionId == resetQuestion.id) {
+                    let qd = '';
+                    for (let i = 0; i < conversation.length; i++) {
+                        if (conversation[i].id == question.id) {
+                            qd = conversation[i + 1].id;
+                        }
+                    }
+                    if (qd)
+                        nextQuestionId = qd;
+                    else
+                        nextQuestionId = resetQuestion.id;
+                }
             }
         }
         catch {
