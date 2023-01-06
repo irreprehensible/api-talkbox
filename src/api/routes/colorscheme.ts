@@ -3,13 +3,8 @@ import config from '../../config';
 import logger from '../../loaders/logger';
 import { Container } from 'typedi';
 import _ from 'lodash';
-import { IBot, IBotInputDTO, botType } from '../../interfaces/IBot';
 import BotService from '../../services/bot.service';
-import UserService from '../../services/user.service';
-import FileService from '../../services/file.service';
 import { auth } from '../middleware/auth.middleware';
-import { referrer } from '../middleware/referrer.middleware';
-import { IqAndA, IResponseDTO, IResponses } from '../../interfaces/IResponse';
 import { IColorScheme } from '../../interfaces/IColorScheme';
 
 const route = Router();

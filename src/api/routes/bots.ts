@@ -3,7 +3,7 @@ import config from '../../config';
 import logger from '../../loaders/logger';
 import { Container } from 'typedi';
 import _ from 'lodash';
-import { IBot, IBotInputDTO, botType } from '../../interfaces/IBot';
+import { IBot, IBotInputDTO } from '../../interfaces/IBot';
 import BotService from '../../services/bot.service';
 import UserService from '../../services/user.service';
 import FileService from '../../services/file.service';
@@ -149,17 +149,6 @@ export default (app: Router) => {
                         { text: "Im gay", value: "0" },
                         { text: "Im dying", value: "1" },
                         { text: "Just bored!", value: "2" },
-                    ],
-                    waitForReply: false
-                },
-                {
-                    id: "66666-99999-00000",
-                    text
-                        : "This chat terminated abruply <br> Really sorry....<br> Please start over...",
-                    type: botType.OPTION,
-                    responseValidation: null,
-                    options: [
-                        { text: "Start Over", value: "0" },
                     ],
                     waitForReply: false
                 }],

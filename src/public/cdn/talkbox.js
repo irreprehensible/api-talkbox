@@ -3,6 +3,18 @@
 var homeurl = "http://localhost:7000";
 var questionDelay = 2000;
 var answerDelay = 500;
+var resetQuestion = {
+    id: "66666-99999-00000",
+    text
+        : "This chat terminated abruply <br> Really sorry....<br> Please start over...",
+    type: 'option',
+    responseValidation: null,
+    options: [
+        { text: "Start Over", value: "0" },
+    ],
+    waitForReply: false
+};
+
 (function () {
     setTimeout(() => {
         //get the bot
@@ -94,9 +106,7 @@ function display(questionId, delay) {
         return el.id == questionId;
     })[0];
     if (!question) {
-        question = conversation.filter(function (el) {
-            return el.id == '66666-99999-00000';
-        })[0];
+        question = resetQuestion;
     }
     let chatBox = document.getElementById('chat-box');
     let html = '';
@@ -591,19 +601,20 @@ function sendOption(questionId, answer, value) {
     let question = conversation.filter(function (el) {
         return el.id == questionId;
     })[0];
+    if (!question)
+        question = resetQuestion;
     let option = document.getElementById(`${questionId}-options`);
     if (!option)
         option = document.getElementById(`${questionId}-rating`);
     option.remove();
     let nextQuestionId = '0';
-    if (questionId != '66666-99999-00000' && question.type != 'rating') {
+    if (question.type != 'rating') {
         try {
-            if(question.options.length > 0) {
+            if (question.options.length > 0) {
                 nextQuestionId = question.options.filter(o => {
                     return o.text == answer;
                 })[0].linkedQuestion
             }
-            
         }
         catch {
             console.log('next')
@@ -618,7 +629,7 @@ function sendOption(questionId, answer, value) {
         show(answer, () => { display(nextQuestionId, questionDelay) });
     }
     else {
-        show(answer, () => { display('66666-99999-00000', questionDelay) });
+        show(answer, () => { display(firstQuestion, questionDelay) });
     }
 }
 function show(answer, callback) {
