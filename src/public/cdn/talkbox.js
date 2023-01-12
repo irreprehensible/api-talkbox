@@ -334,6 +334,13 @@ function setNextQuestion(question) {
             console.log('showing next:', question.nextQuestion);
             display(question.nextQuestion, questionDelay)
         }
+        else {
+            for (let i = 0; i < conversation.length; i++) {
+                if (question.id == conversation[i].id) {
+                    display(conversation[i + 1].id, questionDelay)
+                }
+            }
+        }
     }
     else
         showInput(question);
@@ -599,7 +606,7 @@ function send(questionId) {
 }
 function sendOption(questionId, answer, value) {
     let question;
-    if(questionId == resetQuestion.id) {
+    if (questionId == resetQuestion.id) {
         question = resetQuestion;
     }
     question = conversation.filter(function (el) {

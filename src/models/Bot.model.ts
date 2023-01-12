@@ -9,16 +9,32 @@ const convOption = new mongoose.Schema({
     linkedQuestion: { type: String }
 });
 
+const meetingSchema = new mongoose.Schema({
+    _id: false,
+    weekdays: { type: Array },
+    offDays: { type: Array },
+    appointmentStartTime: { type: String },
+    appointmentEndTime: { type: String },
+    appointmentInterval: { type: Number },
+    timezoneOffset: { type: String },
+    timezone: { type: String },
+    timezoneName: { type: String },
+});
+
 const convSchema = new mongoose.Schema({
     _id: false,
     id: { type: String, required: true },
     text: { type: String, required: true },
+    buttonText: { type: String, required: true },
     type: { type: String, required: true },
     responseValidation: { type: String },
     options: [convOption],
     nextQuestion: { type: String, required: false },
-    waitForReply: { type: Boolean, default: false }
+    waitForReply: { type: Boolean, default: false },
+    style: { type: String },
+    config: meetingSchema
 });
+
 
 const botSchema = new mongoose.Schema({
     name: {
