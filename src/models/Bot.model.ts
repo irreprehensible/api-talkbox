@@ -25,6 +25,7 @@ const convSchema = new mongoose.Schema({
     _id: false,
     id: { type: String, required: true },
     text: { type: String, required: true },
+    placeholder: { type: String },
     buttonText: { type: String, required: true },
     type: { type: String, required: true },
     responseValidation: { type: String },
@@ -51,7 +52,6 @@ const botSchema = new mongoose.Schema({
     modified: { type: Date, required: true, default: Date.now },
     createdBy: { type: String },
     modifiedBy: { type: String },
-    firstQuestion: { type: String },
     startUpParams: {
         startIconRounded: { type: Boolean, default: false },
         startIconBackground: { type: String, default: '#599bb3' }, // themePrimaryColor

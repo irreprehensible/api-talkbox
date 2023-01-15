@@ -55,7 +55,7 @@ function putStyles(bot) {
     const themeHoverBackGroundColor = bot.themeColors.themeHoverBackGroundColor;
     const botTextWrapperColor = getLightColorFromBg(bot.talkBoxParams.talkboxBackGround);
 
-    let typeBoxTopValue = bot.talkBoxParams.headerText?.length > 0 ? '84%' : '94%';
+    let typeBoxTopValue = bot.talkBoxParams.headerText?.length > 0 ? '84%' : '90%';
     if (bot.talkBoxParams.logoText.length == 0) {
         typeBoxTopValue = '99%';
     }
@@ -307,15 +307,24 @@ function showInput(question) {
     let chatBox = document.getElementById('chat-box');
     removeClass(textBox, 'type-box-branding');
     removeClass(chatBox, 'chat-box-branding');
-    textBox.innerHTML = `<textarea id="type-box-text" placeholder="${question?.placeholder}"></textarea>
-            <div id="send-button" class="arrow-right" onclick="send(${question.id})"></div>`;
+    textBox.innerHTML = `<textarea id="type-box-text" placeholder="${question?.placeholder || ''}"></textarea>
+            <div id="send-button" class="arrow-right" onclick="send('${question.id}')"></div>`;
     if (question.responseValidation) {
         let textarea = document.getElementById('type-box-text');
         let sendBtn = document.getElementById('send-button');
         textarea.addEventListener('keyup', (e) => {
             let val = document.getElementById('type-box-text').value;
-            var pattern = new RegExp(`${question.responseValidation}`);
-            if (!pattern.test(val)) {
+            let regex = ''
+            if (!question.responseValidation || question.responseValidation == 'text') {
+                regex = /.*/
+            }
+            if (question.responseValidation == 'email') {
+                regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+            }
+            if (question.responseValidation == 'number') {
+                regex = /^[0-9]*$/
+            }
+            if (!val.match(regex)) {
                 addClass(textarea, 'error-validation');
                 removeClass(sendBtn, 'send-button-active');
             }
@@ -337,7 +346,10 @@ function setNextQuestion(question) {
         else {
             for (let i = 0; i < conversation.length; i++) {
                 if (question.id == conversation[i].id) {
-                    display(conversation[i + 1].id, questionDelay)
+                    if (conversation[i + 1])
+                        display(conversation[i + 1].id, questionDelay);
+                    else
+                        display(resetQuestion, questionDelay);
                 }
             }
         }

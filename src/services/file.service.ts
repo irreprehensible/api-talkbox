@@ -45,9 +45,9 @@ export default class FileService {
     }
     private _makeJsForTalkboxStarter(bot: IBot): string {
         const homeUrl = config.homeUrl;
-        const talkbox_html = `<!DOCTYPE html><head><script> var botId = "${bot._id}"; var firstQuestion = "${bot.firstQuestion}"; </script> </head> <body> <div id="chat-container"> <div id="chat-box"></div> <div id="type-box"> <div class="branding"></div>  </div> </div> <input type="hidden" id="session" /> <div> <script src="${homeUrl}/cdn/talkbox.js"></script> </div> </body> </html>`;
+        const talkbox_html = `<!DOCTYPE html><head><script> var botId = "${bot._id}"; var firstQuestion = "${bot.conv[0]}"; </script> </head> <body> <div id="chat-container"> <div id="chat-box"></div> <div id="type-box"> <div class="branding"></div>  </div> </div> <input type="hidden" id="session" /> <div> <script src="${homeUrl}/cdn/talkbox.js"></script> </div> </body> </html>`;
         // bot.startUpParams.startIconPosition.left is a boolean value to specify left or right
-        const s_right = `${bot.startUpParams.startIconPosition.left ? 'left:93px;' : 'right:23px;'}`;
+        const s_right = `${bot.startUpParams.startIconPosition.left ? 'left:93px;' : 'right:93px;'}`;
         //bot.startUpParams.startIconPosition.bottom is a pixel value to specify icon placement at the bottom
         const s_bottom = `bottom: ${bot.startUpParams.startIconPosition.bottom}px;`;
         const s_startButtonContainer = `#start-button-container { position: fixed; ${s_right}  z-index: 214748000; ${s_bottom} user-select: none }`;
@@ -72,7 +72,7 @@ export default class FileService {
         let s_talkboxtopbuttons = '';
         if (bot.talkBoxParams.headerText?.length > 0) {
             s_talkboxheaderheight = 'height: 8%;';
-            s_talkboxheadertext = '#talk-header-text { padding: 7px 11px 0px 23px; width: 64%; display: inline-block; color:#fff; font-weight:500 } ';
+            s_talkboxheadertext = '#talk-header-text { padding: 7px 11px 0px 23px; width: 64%; display: inline-block; color:#fff; font-size: x-large; } ';
             if (bot.talkBoxParams.closeButton) {
                 s_talkboxtopbuttons = '#top-buttons { width: 24%; display: inline-block;} #close-button { border-radius: 50%; margin-top: 4px;  background-color: #DDD; width: 13px; text-align: center; float:right; font-size: 13px; font-family: monospace; } ';
             }
