@@ -151,8 +151,21 @@ export default (app: Router) => {
                         { text: "Just bored!", value: "2" },
                     ],
                     waitForReply: false
+                },
+                {
+                    id: "3",
+                    text: "Welcome to the club!",
+                    type: "multi",
+                    responseValidation: null,
+                    options: [
+                        { text: "Whaterver", value: "0" },
+                        { text: "Wheezing...", value: "1" },
+                        { text: "stoned", value: "2" },
+                        { text: "waiting...", value: "3" },
+                    ],
+                    nextQuestion: "3",
+                    waitForReply: false
                 }],
-                firstQuestion: '0',
                 referrers: [''],
                 createdBy: req.body.user.email,
                 modifiedBy: req.body.user.email

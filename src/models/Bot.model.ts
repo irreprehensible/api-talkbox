@@ -26,7 +26,7 @@ const convSchema = new mongoose.Schema({
     id: { type: String, required: true },
     text: { type: String, required: true },
     placeholder: { type: String },
-    buttonText: { type: String, required: true },
+    buttonText: { type: String },
     type: { type: String, required: true },
     responseValidation: { type: String },
     options: [convOption],

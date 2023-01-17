@@ -259,9 +259,18 @@ function display(questionId, delay) {
             let btnChoose = document.getElementById('multi-btn-choose');
             let btnCancel = document.getElementById('multi-btn-cancel');
             btnChoose.addEventListener('click', (_e) => {
-                document.getElementsByClassName('cal-buttons')[0].remove();
                 let answer = '';
                 let chkArray = document.getElementsByClassName('multi-container')[0].children;
+                //validate if an item is selected
+                let count = 0;
+                for (let chk of chkArray) {
+                    if (chk.children[0].checked) {
+                        count++;
+                    }
+                }
+                if (count == 0) {
+                    return;
+                }
                 for (let chk of chkArray) {
                     if (chk.children[0].checked) {
                         answer += `,${chk.innerText}`;
@@ -270,6 +279,7 @@ function display(questionId, delay) {
                     chk.children[0].setAttribute('disabled', 'disabled');
                 }
                 answer = answer.substr(1, answer.length);
+                document.getElementsByClassName('cal-buttons')[0].remove();
                 sendToServer(question.id, answer);
                 show(answer, () => {
                     setNextQuestion(question);
@@ -277,6 +287,11 @@ function display(questionId, delay) {
             });
             btnCancel.addEventListener('click', (_e) => {
                 // removeChatBoxCover();
+                document.getElementsByClassName('cal-buttons')[0].remove();
+                answer = 'None selected,'
+                show(answer, () => {
+                    setNextQuestion(question);
+                });
                 showBranding();
             })
         }
