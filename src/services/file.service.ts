@@ -56,7 +56,7 @@ export default class FileService {
         const s_width = `width:${bot.startUpParams.startIconSize.width}px;`;
         const s_background = `background-color:${bot.startUpParams.startIconBackground};`;
         const s_boxshadow = bot.startUpParams.startIconShadow.required ? `box-shadow:${bot.startUpParams.startIconShadow.style};` : '';
-        const s_roundedIcon = bot.startUpParams.startIconRounded ? 'border-radius: 50% !important' : 'border-radius: 7px !important;';
+        const s_roundedIcon = bot.startUpParams.startIconRounded ? 'border-radius: 50% !important;' : 'border-radius: 7px !important;';
         const s_startButton = `#start-button { ${s_width} ${s_height} ${s_background} ${s_roundedIcon} margin: -3px; cursor: pointer; ${s_boxshadow} } `;
 
         let s_startButtonText = '';

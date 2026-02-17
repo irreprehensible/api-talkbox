@@ -80,11 +80,7 @@ export default class UserService {
         logger.info(`user.service: saving for user ${userEmail}, bot id ${botid}`)
         return await new Promise<any>((resolve, reject) => {
             const update = { 'botId': botid, 'canEdit': canEdit }
-            User.updateOne({ 'email': userEmail }, { '$push': { 'bots': update } }).exec(function (err, updateRes) {
-                if (err) return reject(err);
-                else
-                    return resolve(updateRes);
-            });
+            User.updateOne({ 'email': userEmail }, { '$push': { 'bots': update } }).exec();
         })
     }
 
