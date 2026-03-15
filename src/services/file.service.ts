@@ -74,7 +74,7 @@ export default class FileService {
             s_talkboxheaderheight = 'height: 8%;';
             s_talkboxheadertext = '#talk-header-text { padding: 7px 11px 0px 23px; width: 64%; display: inline-block; color:#fff; font-size: x-large; } ';
             if (bot.talkBoxParams.closeButton) {
-                s_talkboxtopbuttons = '#top-buttons { width: 24%; display: inline-block;} #close-button { border-radius: 50%; margin-top: 4px;  background-color: #DDD; width: 13px; text-align: center; float:right; font-size: 13px; font-family: monospace; } ';
+                s_talkboxtopbuttons = '#top-buttons { width: 24%; display: inline-block;} #close-button { border-radius: 50%; margin-top: -19px;  background-color: #DDD; width: 15px; text-align: center; float:right; font-size: 13px; font-family: monospace; } ';
             }
         }
         else {
