@@ -64,7 +64,7 @@ function putStyles(bot) {
     var h = document.head || d.getElementsByTagName("head")[0];
     h.appendChild(startStyles);
     var optionStyles = document.createElement("style");
-    optionStyles.innerText = `.bot-text-wrapper { background-color: ${botTextWrapperColor}; padding: 7px;  margin-top: 12px; margin-left: 3px; width: 85%; border-radius: 5px; padding-bottom: 15px; } .text { padding: 2px; font-weight: 400; letter-spacing: 1px; font-family: inherit; } .options-container { padding: 2px;   margin-top: 5px; padding-top: 2px; } .options-container div { margin-right: 5px; letter-spacing: 1px;  box-shadow: 1px 3px 9px 0px ${themeBoxShadowColor}; color:#ffffff; font-family: Arial; background-color:${themePrimaryColor}; padding: 3px 7px; font-size:16px; font-weight:bold; text-decoration:none; border-radius: 4px; display: inline-flex; width: max-content; text-shadow:0px 1px 0px ${themeTextShadowColor}; } .options-container div:hover { background-color: ${themeHoverBackGroundColor}; cursor: pointer; } .options-container div:active { position:relative; top:1px; } .rounded { border-radius:50% !important; } .multi-container { padding: 2px; margin: 5px 5px 5px 12px; padding-top: 2px; max-height: 200px; overflow-y: scroll; } .multi-container div { margin: 7px; letter-spacing: 1px; box-shadow: 1px 3px 9px 0px ${themeBoxShadowColor}; padding: 3px 7px; text-decoration:none; user-select: none; border-radius: 4px; display: inline-flex; width: max-content; } .multi-btn { display: inline-flex; letter-spacing: 1px; line-height: 0; padding: 15px; box-shadow: 0px 10px 14px -7px ${themeBoxShadowColor}; background-color:${themePrimaryColor}; border-radius: 5px; margin: 10px; font-family:Arial; font-size:16px; font-weight:bold; text-decoration:none; text-shadow:0px 1px 0px ${themeTextShadowColor}; color:#ffffff; } .multi-btn:hover { background-color:${themeHoverBackGroundColor}; } .multi-btn:active { position:relative; top:1px; } .res-text { padding-right: 12px; margin: 7px; background-color: ${themeHoverBackGroundColor}; color: white; letter-spacing: 1px; font-family: inherit; padding-left: 12px; margin-left: 11%; border-radius: 4px;   min-width: 100px; } .btn-container-text { text-align: center; box-shadow: 0px 2px 5px 0px ${themeBoxShadowColor}; background-color: ${themePrimaryColor}; border-radius: 4px; cursor: pointer; color: #ffffff; font-family: Arial; font-size: 16px; font-weight: bold; letter-spacing: 1px; padding: 8px 1px; text-decoration: none; margin: 9px; text-shadow: 0px 1px 0px ${themeTextShadowColor};} btn-container-text:hover { background-color: ${themeHoverBackGroundColor}; } .btn-container-text:active { position:relative; top:1px; } #loader { width:fit-content; } .arrow-right { width: 0; height: 0; border-top: 12px solid transparent; border-bottom: 12px solid transparent;  border-left: 25px solid ${themePrimaryColor}; position: relative; top: -34px; float: right; } .arrow-right:hover { border-left: 25px solid ${themeHoverBackGroundColor}; } .branding { text-align: center; font-size: medium; font-family: monospace; letter-spacing: 2px; padding-top: 6px; user-select: none; transition: ease 2s } .cal-cover { top: 12% !important; }`;
+    optionStyles.innerText = `.bot-text-wrapper { background-color: ${botTextWrapperColor}; padding: 7px;  margin-top: 12px; margin-left: 3px; width: 85%; border-radius: 5px; padding-bottom: 15px; } .text { padding: 2px; font-weight: 400; letter-spacing: 1px; font-family: inherit; } .options-container { padding: 2px;   margin-top: 5px; padding-top: 2px; } .options-container div { margin: 5px; letter-spacing: 1px;  box-shadow: 1px 3px 9px 0px ${themeBoxShadowColor}; color:#ffffff; font-family: Arial; background-color:${themePrimaryColor}; padding: 3px 7px; font-size:16px; font-weight:bold; text-decoration:none; border-radius: 4px; display: inline-flex; width: max-content; text-shadow:0px 1px 0px ${themeTextShadowColor}; } .options-container div:hover { background-color: ${themeHoverBackGroundColor}; cursor: pointer; } .options-container div:active { position:relative; top:1px; } .rounded { border-radius:50% !important; } .multi-container { padding: 2px; margin: 5px 5px 5px 12px; padding-top: 2px; max-height: 200px; overflow-y: scroll; } .multi-container div { margin: 7px; letter-spacing: 1px; box-shadow: 1px 3px 9px 0px ${themeBoxShadowColor}; padding: 3px 7px; text-decoration:none; user-select: none; border-radius: 4px; display: inline-flex; width: max-content; } .multi-btn { display: inline-flex; letter-spacing: 1px; line-height: 0; padding: 15px; box-shadow: 0px 10px 14px -7px ${themeBoxShadowColor}; background-color:${themePrimaryColor}; border-radius: 5px; margin: 10px; font-family:Arial; font-size:16px; font-weight:bold; text-decoration:none; text-shadow:0px 1px 0px ${themeTextShadowColor}; color:#ffffff; } .multi-btn:hover { background-color:${themeHoverBackGroundColor}; } .multi-btn:active { position:relative; top:1px; } .res-text { padding-right: 12px; margin: 7px; background-color: ${themeHoverBackGroundColor}; color: white; letter-spacing: 1px; font-family: inherit; padding-left: 12px; margin-left: 11%; border-radius: 4px;   min-width: 100px; } .btn-container-text { text-align: center; box-shadow: 0px 2px 5px 0px ${themeBoxShadowColor}; background-color: ${themePrimaryColor}; border-radius: 4px; cursor: pointer; color: #ffffff; font-family: Arial; font-size: 16px; font-weight: bold; letter-spacing: 1px; padding: 8px 1px; text-decoration: none; margin: 9px; text-shadow: 0px 1px 0px ${themeTextShadowColor};} btn-container-text:hover { background-color: ${themeHoverBackGroundColor}; } .btn-container-text:active { position:relative; top:1px; } #loader { width:fit-content; } .arrow-right { width: 0; height: 0; border-top: 12px solid transparent; border-bottom: 12px solid transparent;  border-left: 25px solid ${themePrimaryColor}; position: relative; top: -34px; float: right; } .arrow-right:hover { border-left: 25px solid ${themeHoverBackGroundColor}; } .branding { text-align: center; font-size: medium; font-family: monospace; letter-spacing: 2px; padding-top: 6px; user-select: none; transition: ease 2s } .cal-cover { top: 12% !important; }`;
     h.appendChild(optionStyles);
     var shineStyle = document.createElement("style");
     shineStyle.innerText = `.btn-shine {  color: #fff; background: linear-gradient(to right, #02135c 0, #fff 10%, #02135c 20%); background-position: 0; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: shine 3s infinite linear; animation-fill-mode: forwards; -webkit-text-size-adjust: none;   font-weight: 600; font-size: 57px; text-decoration: none; white-space: nowrap; line-height: 1; margin-top:-35px; } @-moz-keyframes shine { 0% { background-position: 0; } 60% { background-position: 180px; } 100% { background-position: 180px; }} @-webkit-keyframes shine { 0% { background-position: 0; } 60% { background-position: 180px; } 100% {  background-position: 180px; }} @-o-keyframes shine { 0% { background-position: 0; } 60% { background-position: 180px; } 100% { background-position: 180px; }} @keyframes shine { 0% { background-position: 0; } 60% { background-position: 180px; } 100% { background-position: 180px; }}`;
@@ -154,8 +154,8 @@ function display(questionId, delay) {
             });
             html += '</div>';
             html += '<div class="cal-buttons">';
-            html += '<div class="multi-btn" id="multi-btn-cancel">Skip this</div>';
-            html += '<div class="multi-btn" id="multi-btn-choose">Choose</div>';
+            html += `<div class="multi-btn" id="${question.id}-multi-btn-cancel">Skip this</div>`;
+            html += `<div class="multi-btn" id="${question.id}-multi-btn-choose">Choose</div>`;
             html += '</div>';
             break;
         case 'rating':
@@ -256,11 +256,11 @@ function display(questionId, delay) {
             });
         }
         if (question.type == 'multi') {
-            let btnChoose = document.getElementById('multi-btn-choose');
-            let btnCancel = document.getElementById('multi-btn-cancel');
+            let btnChoose = document.getElementById(`${question.id}-multi-btn-choose`);
+            let btnCancel = document.getElementById(`${question.id}-multi-btn-cancel`);
             btnChoose.addEventListener('click', (_e) => {
                 let answer = '';
-                let chkArray = document.getElementsByClassName('multi-container')[0].children;
+                let chkArray = document.getElementById(`${question.id}-multi`).children;
                 //validate if an item is selected
                 let count = 0;
                 for (let chk of chkArray) {
@@ -614,21 +614,25 @@ function send(questionId) {
             // socket.emit('message',val);
             sendToServer(question.id, val);
             document.getElementById('type-box-text').value = '';
-            socket.on('onMessage', (data) => {
-                resolve(data)
-            });
-            socket.on('disconnect', (data) => {
-                reject(data);
-            })
-        });
-        p.then((data) => {
-            show(data.id, () => {
+            show(val, () => {
                 question.waitForReply = false;
                 setNextQuestion(question);
             });
-        }, error => {
-            console.log(error);
+            // socket.on('onMessage', (data) => {
+               // resolve(data)
+            // });
+            // socket.on('disconnect', (data) => {
+                // reject(data);
+            // })
         });
+        // p.then((data) => {
+        //     show(data.id, () => {
+        //         question.waitForReply = false;
+        //         setNextQuestion(question);
+        //     });
+        // }, error => {
+        //     console.log(error);
+        // });
     }
 }
 function sendOption(questionId, answer, value) {

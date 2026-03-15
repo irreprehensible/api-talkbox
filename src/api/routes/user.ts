@@ -36,13 +36,15 @@ export default (app: Router) => {
 
   route.post('/', async (req: Request, res: Response, next: NextFunction) => {
     try {
+      logger.debug(`user.Route: creating user with details ${JSON.stringify(req.body)}`);
       const newUser: IUserInputDTO = {
-        name: req.body.user.name || req.body.user.email,
+        name: req.body.user.email,
         email: req.body.user.email,
         password: req.body.user.password,
         bots: []
       }
 
+logger.debug(`user.Route: validating user details ${JSON.stringify(newUser)}`);
       const userServiceInstance = Container.get(UserService);
       const authServiceInstance = Container.get(AuthService);
 
@@ -55,8 +57,9 @@ export default (app: Router) => {
 
       logger.debug(`user.Route: calling create user${newUser}`)
       await userServiceInstance.createUser(newUser).then((user: IUser) => {
+        logger.debug(`user.Route: user created successfully ${JSON.stringify(user)}`);
         let token = authServiceInstance.generateAuthToken(user);
-        res.header('x-auth-token', token).send(_.pick(user, ['_id', 'name', 'email']));
+        res.header('x-auth-token', token).status(200).send(_.pick(user, ['_id', 'name', 'email']));
       }).catch(err => {
         const msg = `user.Route: 🔥 error revieved when creating a user ${_.pick(newUser, ['name', 'email'])} with error-> ${err}`;
         logger.error(msg);

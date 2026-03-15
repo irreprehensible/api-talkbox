@@ -8,6 +8,7 @@ import config from './config';
 import Logger from './loaders/logger';
 import mongooseLoader from './loaders/mongoose';
 import routes from './api';
+require("node:dns/promises").setServers(["1.1.1.1", "8.8.8.8"]);
 
 const app: Application = express();
 
